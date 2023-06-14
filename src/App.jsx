@@ -61,7 +61,23 @@ function App() {
       </div>
       {/* </form> */}
       <h3>Burning...🔥</h3>
-      <div className="app-style">
+      <div className="list-style">
+        {plans.map((item) => {
+          return (
+            <div key={item.id} className="component-style">
+              <h2>{item.title}</h2>
+              <div>{item.comment}</div>
+              <button onClick={() => clickRemoveButtonHandler(item.id)}>
+                삭제하기
+              </button>
+              <button onClick={clickCompleteButtonHandler}>완료</button>
+            </div>
+          );
+        })}
+      </div>
+      {/* </form> */}
+      <h3>Done...🎉</h3>
+      <div className="list-style">
         {plans.map((item) => {
           return (
             <div key={item.id} className="component-style">

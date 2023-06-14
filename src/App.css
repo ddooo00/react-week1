@@ -29,8 +29,10 @@
   font-weight: 700;
 }
 
-.app-style {
+.list-style {
   gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .component-style {
   width: 270px;
