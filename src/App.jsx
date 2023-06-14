@@ -41,7 +41,7 @@ function App() {
     setPlans([...plans, newPlan]);
     setTitle("");
     setComment("");
-    alert("Todo List가 추가되었어요!✍🏻");
+    alert("할 일이 추가되었어요!✍🏻");
 
     //배열 불변성 유지
     setPlans([...plans, newPlan]);
@@ -70,7 +70,7 @@ function App() {
       finished: true,
     };
     setPlans([...plans, finishedList]);
-    alert("축하합니다❤️");
+    alert("고생했다!❤️");
   };
 
   //취소 버튼 클릭시 박스 아래로 이동 + 이벤트
@@ -83,65 +83,93 @@ function App() {
       finished: false,
     };
     setPlans([...plans, canceledList]);
-    alert("포기하지 말고 화이팅!👏🏻");
+    alert("힘내 화이팅!👏🏻");
   };
 
   return (
-    <div>
-      <div className="container">
-        <h3> My Todo List</h3>
-      </div>
-      {/* <form > */}
-      <div className="add-form">
-        <div className="input-group">
-          <label className="form-label">제목</label>
-          <input value={title} onChange={titleChangeHandler} />
-
-          <label className="form-label">내용</label>
-          <input value={comment} onChange={commentChangeHandler} />
+    <div className="container">
+      <div className="wrapper">
+        <div className="header">
+          <h3> My Todo List </h3>
         </div>
+        {/* <form > */}
+        <div className="add-form">
+          <div className="input-group">
+            <label className="form-label">제목</label>
+            <input
+              className="input-box"
+              value={title}
+              onChange={titleChangeHandler}
+            />
 
-        <button onClick={clickAddButtonHandler}>추가하기</button>
-      </div>
-      {/* </form> */}
-      <h3>Burning...🔥</h3>
-      <div className="list-style">
-        {plans
-          .filter((plans) => plans.finished !== true)
-          .map((item) => {
-            return (
-              <div key={item.id} className="component-style">
-                <h2>{item.title}</h2>
-                <div>{item.comment}</div>
-                <button onClick={() => clickRemoveButtonHandler(item.id)}>
-                  삭제하기
-                </button>
-                <button onClick={() => clickFinishedButtonHandler(item.id)}>
-                  완료
-                </button>
-              </div>
-            );
-          })}
-      </div>
-      {/* </form> */}
-      <h3>Done...🎉</h3>
-      <div className="list-style">
-        {plans
-          .filter((plans) => plans.finished === true)
-          .map((item) => {
-            return (
-              <div key={item.id} className="component-style">
-                <h2>{item.title}</h2>
-                <div>{item.comment}</div>
-                <button onClick={() => clickRemoveButtonHandler(item.id)}>
-                  삭제하기
-                </button>
-                <button onClick={() => clickCanceledButtonHandler(item.id)}>
-                  취소
-                </button>
-              </div>
-            );
-          })}
+            <label className="form-label">내용</label>
+            <input
+              className="input-box"
+              value={comment}
+              onChange={commentChangeHandler}
+            />
+          </div>
+
+          <button className="form-btn" onClick={clickAddButtonHandler}>
+            추가하기
+          </button>
+        </div>
+        {/* </form> */}
+        <h3>Burning...🔥</h3>
+        <div className="list-style">
+          {plans
+            .filter((plans) => plans.finished !== true)
+            .map((item) => {
+              return (
+                <div key={item.id} className="component-style">
+                  <h2>{item.title}</h2>
+                  <div>{item.comment}</div>
+                  <div className="btn">
+                    <button
+                      className="delete-btn"
+                      onClick={() => clickRemoveButtonHandler(item.id)}
+                    >
+                      삭제하기
+                    </button>
+                    <button
+                      className="com-can-btn"
+                      onClick={() => clickFinishedButtonHandler(item.id)}
+                    >
+                      완료
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+        {/* </form> */}
+        <h3>Done...🎉</h3>
+        <div className="list-style">
+          {plans
+            .filter((plans) => plans.finished === true)
+            .map((item) => {
+              return (
+                <div key={item.id} className="component-style">
+                  <h2>{item.title}</h2>
+                  <div>{item.comment}</div>
+                  <div className="btn">
+                    <button
+                      className="delete-btn"
+                      onClick={() => clickRemoveButtonHandler(item.id)}
+                    >
+                      삭제하기
+                    </button>
+                    <button
+                      className="com-can-btn"
+                      onClick={() => clickCanceledButtonHandler(item.id)}
+                    >
+                      취소
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
