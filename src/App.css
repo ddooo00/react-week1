@@ -30,8 +30,6 @@
 }
 
 .app-style {
-  padding: 100px;
-  display: flex;
   gap: 12px;
 }
 .component-style {
@@ -40,8 +38,4 @@
   border: 4px solid teal;
   border-radius: 12px;
   padding: 12px 24px 24px 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

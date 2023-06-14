@@ -39,14 +39,13 @@ function App() {
 
   //완료 버튼 클릭이벤트
   const clickCompleteButtonHandler = () => {
-    alert("Hi");
+    alert("축하합니다!");
   };
 
   return (
-    <div className="">
+    <div>
       <div className="container">
-        <div>My Todo List</div>
-        <div>React</div>
+        <h3> My Todo List</h3>
       </div>
       {/* <form > */}
       <div className="add-form">
@@ -61,6 +60,7 @@ function App() {
         <button onClick={clickAddButtonHandler}>추가하기</button>
       </div>
       {/* </form> */}
+      <h3>Burning...🔥</h3>
       <div className="app-style">
         {plans.map((item) => {
           return (
