@@ -43,9 +43,13 @@ header {
   border-radius: 10px;
   background-color: teal;
   color: white;
-  height: 30px;
   width: 80px;
+  height: 30px;
   cursor: pointer;
+}
+
+.form-btn:hover {
+  background-color: coral;
 }
 .form-label {
   font-size: 16px;
@@ -84,7 +88,16 @@ header {
   border: 2px solid red;
   margin-right: 10px;
 }
+.delete-btn:hover {
+  border: 3px solid red;
+  font-weight: 900;
+}
 .com-can-btn {
   background-color: #fff;
   border: 2px solid blueviolet;
+}
+
+.com-can-btn:hover {
+  border: 3px solid blueviolet;
+  font-weight: 900;
 }
