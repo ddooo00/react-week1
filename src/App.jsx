@@ -38,13 +38,15 @@ function App() {
       comment,
       finished: false,
     };
-    setPlans([...plans, newPlan]);
-    setTitle("");
-    setComment("");
+
     alert("할 일이 추가되었어요!✍🏻");
 
     //배열 불변성 유지
     setPlans([...plans, newPlan]);
+
+    //카드 추가하고 리셋
+    setTitle("");
+    setComment("");
   };
 
   //삭제 버튼 변수할당 및 카드삭제
@@ -53,37 +55,34 @@ function App() {
     setPlans(deletePlans);
   };
 
-  // 완료 + 취소버튼 클릭시 카드삭제
-
-  const clickDoneButtonHandler = (id) => {
-    const donePlans = plans.filter((plan) => plan.id !== id);
-    setPlans(donePlans);
-  };
-
-  //완료 버튼 클릭시 박스 아래로 이동 + 이벤트
+  // 완료 버튼 클릭시 박스 아래로 이동
   const clickFinishedButtonHandler = (id) => {
-    const planId = id - 1;
-    const finishedList = {
-      id,
-      title: plans[planId].title,
-      comment: plans[planId].comment,
+    const planIndex = plans.findIndex((plan) => plan.id === id);
+    const completedPlan = plans[planIndex];
+
+    // 완료한 카드와 함께 업데이트할 카드 목록
+    const updatedPlans = plans.filter((plan) => plan.id !== id);
+    updatedPlans.push({
+      ...completedPlan,
       finished: true,
-    };
-    setPlans([...plans, finishedList]);
+    });
+
+    setPlans(updatedPlans);
     alert("고생했다!❤️");
   };
 
-  //취소 버튼 클릭시 박스 아래로 이동 + 이벤트
+  // 취소 버튼 클릭시 박스 위로 이동
   const clickCanceledButtonHandler = (id) => {
-    const planId = id + 1;
-    const canceledList = {
-      id,
-      title: plans[planId].title,
-      comment: plans[planId].comment,
-      finished: false,
-    };
-    setPlans([...plans, canceledList]);
-    alert("힘내 화이팅!👏🏻");
+    const canceledPlan = plans.find((plan) => plan.id === id);
+
+    // 취소한 카드와 함께 업데이트할 카드 목록
+    const updatedPlans = [
+      ...plans.filter((plan) => plan.id !== id),
+      { ...canceledPlan, finished: false },
+    ];
+
+    setPlans(updatedPlans);
+    alert("포기하지마!😂");
   };
 
   return (
@@ -133,7 +132,9 @@ function App() {
                     </button>
                     <button
                       className="com-can-btn"
-                      onClick={() => clickFinishedButtonHandler(item.id)}
+                      onClick={() => {
+                        clickFinishedButtonHandler(item.id);
+                      }}
                     >
                       완료
                     </button>
