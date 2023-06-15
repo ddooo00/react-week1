@@ -55,7 +55,7 @@ function App() {
     setPlans(deletePlans);
   };
 
-  // 완료 버튼 클릭시 카드 아래로 이동
+  // 완료 버튼 클릭시 카드 아래로 이동 + 원래카드 삭제
   const clickFinishedButtonHandler = (id) => {
     const completedPlan = plans.filter((plan) => plan.id === id)[0];
 
@@ -70,7 +70,7 @@ function App() {
     alert("고생했다!❤️");
   };
 
-  // 취소 버튼 클릭시 카드 위로 이동
+  // 취소 버튼 클릭시 카드 위로 이동 + 원래카드 삭제
   const clickCanceledButtonHandler = (id) => {
     const canceledPlan = plans.filter((plan) => plan.id === id)[0];
 
