@@ -50,9 +50,9 @@ function App() {
   };
 
   //삭제 버튼 클릭시 카드삭제
-  const clickRemoveButtonHandler = (id) => {
-    const removePlans = plans.filter((plan) => plan.id !== id);
-    setPlans(removePlans);
+  const clickRemovedButtonHandler = (id) => {
+    const removedPlans = plans.filter((plan) => plan.id !== id);
+    setPlans(removedPlans);
   };
 
   // 완료 버튼 클릭시 카드 아래로 이동 + 원래카드 삭제
@@ -126,7 +126,7 @@ function App() {
                   <div className="btn">
                     <button
                       className="delete-btn"
-                      onClick={() => clickRemoveButtonHandler(item.id)}
+                      onClick={() => clickRemovedButtonHandler(item.id)}
                     >
                       삭제
                     </button>
@@ -156,7 +156,7 @@ function App() {
                   <div className="btn">
                     <button
                       className="delete-btn"
-                      onClick={() => clickRemoveButtonHandler(item.id)}
+                      onClick={() => clickRemovedButtonHandler(item.id)}
                     >
                       삭제
                     </button>
