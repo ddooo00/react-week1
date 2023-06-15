@@ -51,8 +51,8 @@ function App() {
 
   //삭제 버튼 클릭시 카드삭제
   const clickRemoveButtonHandler = (id) => {
-    const deletePlans = plans.filter((plan) => plan.id !== id);
-    setPlans(deletePlans);
+    const removePlans = plans.filter((plan) => plan.id !== id);
+    setPlans(removePlans);
   };
 
   // 완료 버튼 클릭시 카드 아래로 이동 + 원래카드 삭제
