@@ -109,7 +109,6 @@ function App() {
               onChange={commentChangeHandler}
             />
           </div>
-
           <button className="form-btn" onClick={clickAddButtonHandler}>
             추가하기
           </button>

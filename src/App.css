@@ -17,14 +17,12 @@ header {
 
 .add-form {
   background-color: #eee;
-  border-radius: 12px;
-  justify-content: space-between;
   margin: 0 auto;
   padding: 30px;
-
-  align-items: center;
-  display: flex;
   gap: 20px;
+  display: flex;
+  border-radius: 12px;
+  justify-content: space-between;
 }
 
 .input-group {
@@ -60,24 +58,25 @@ header {
   flex-wrap: wrap;
 }
 .component-style {
-  width: 268px;
-  height: 150px;
+  width: 250px;
+  height: 160px;
   border: 4px solid teal;
   border-radius: 12px;
   padding: 12px 24px 24px 24px;
-}
-button {
-  border-radius: 8px;
-  cursor: pointer;
-  height: 40px;
-  width: 50%;
-  margin-top: 15px;
 }
 
 /* 삭제 완료 버튼 사이 마진줘서 떨어지게 하고싶은데, 감싸지않고 주면 아래로 내려가서 만듦 */
 .btn {
   display: flex;
   flex-direction: row;
+}
+
+.btn button {
+  border-radius: 8px;
+  cursor: pointer;
+  height: 40px;
+  width: 50%;
+  margin-top: 25px;
 }
 
 .delete-btn {
