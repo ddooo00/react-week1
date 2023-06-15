@@ -88,10 +88,11 @@ function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <div className="header">
+        <header>
           <h3> My Todo List </h3>
-        </div>
-        {/* <form > */}
+        </header>
+
+        {/* form 부분*/}
         <div className="add-form">
           <div className="input-group">
             <label className="form-label">제목</label>
@@ -113,7 +114,8 @@ function App() {
             추가하기
           </button>
         </div>
-        {/* </form> */}
+
+        {/* 위쪽 카드부분 */}
         <h3>Burning...🔥</h3>
         <div className="list-style">
           {plans
@@ -143,7 +145,7 @@ function App() {
               );
             })}
         </div>
-        {/* </form> */}
+        {/* 아래쪽 카드부분 */}
         <h3>Done...🎉</h3>
         <div className="list-style">
           {plans
