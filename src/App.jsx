@@ -56,7 +56,7 @@ function App() {
   };
 
   // 완료 버튼 클릭시 카드 아래로 이동 + 원래카드 삭제
-  const clickFinishedButtonHandler = (id) => {
+  const clickCompletedButtonHandler = (id) => {
     const completedPlan = plans.filter((plan) => plan.id === id)[0];
 
     if (!completedPlan) {
@@ -133,7 +133,7 @@ function App() {
                     <button
                       className="com-can-btn"
                       onClick={() => {
-                        clickFinishedButtonHandler(item.id);
+                        clickCompletedButtonHandler(item.id);
                       }}
                     >
                       완료
