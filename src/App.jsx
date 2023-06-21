@@ -16,6 +16,7 @@ function App() {
       isDone: false,
     },
   ]);
+
   //useState
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -56,34 +57,30 @@ function App() {
   };
 
   // 완료 버튼 클릭시 카드 아래로 이동 + 원래카드 삭제
-  const clickCompletedButtonHandler = (id) => {
-    const completedPlan = plans.filter((plan) => plan.id === id)[0];
-
-    if (!completedPlan) {
-      return;
-    }
-
-    const updatedPlans = plans.filter((plan) => plan.id !== id);
-    updatedPlans.push({ ...completedPlan, isDone: true });
-
-    setPlans(updatedPlans);
-    alert("고생했다!❤️");
+  const clickCompletedButtonHandler = (id, text) => {
+    // newPlans
+    const newPlans = plans.map((plan) => {
+      if (plan.id === id) {
+        return { ...plan, isDone: !plan.isDone };
+      }
+      return plan;
+    });
+    setPlans(newPlans);
+    alert(text);
   };
 
   // 취소 버튼 클릭시 카드 위로 이동 + 원래카드 삭제
   const clickCanceledButtonHandler = (id) => {
-    const canceledPlan = plans.filter((plan) => plan.id === id)[0];
-
-    if (!canceledPlan) {
-      return;
-    }
-
-    const updatedPlans = plans.filter((plan) => plan.id !== id);
-    updatedPlans.push({ ...canceledPlan, isDone: false });
-
-    setPlans(updatedPlans);
-    alert("포기하지마!😂");
+    // setPlans(updatedPlans);
+    const newPlans = plans.map((plan) => {
+      if (plan.id === id) {
+        return { ...plan, isDone: !plan.isDone };
+      }
+      return plan;
+    });
+    setPlans(newPlans);
   };
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -117,7 +114,7 @@ function App() {
         <h3>Burning...🔥</h3>
         <div className="list-style">
           {plans
-            .filter((plans) => plans.isDone !== true)
+            .filter((plans) => !plans.isDone)
             .map((item) => {
               return (
                 <div key={item.id} className="component-style">
@@ -133,21 +130,23 @@ function App() {
                     <button
                       className="com-can-btn"
                       onClick={() => {
-                        clickCompletedButtonHandler(item.id);
+                        clickCompletedButtonHandler(item.id, "고생했다!!");
                       }}
                     >
-                      완료
+                      {/* 완료 */}
+                      {item.isDone === true ? "취소" : "완료"}
                     </button>
                   </div>
                 </div>
               );
             })}
         </div>
+
         {/* 아래쪽 카드부분(삭제, 취소) */}
         <h3>Done...🎉</h3>
         <div className="list-style">
           {plans
-            .filter((plans) => plans.isDone === true)
+            .filter((plans) => plans.isDone)
             .map((item) => {
               return (
                 <div key={item.id} className="component-style">
@@ -162,9 +161,12 @@ function App() {
                     </button>
                     <button
                       className="com-can-btn"
-                      onClick={() => clickCanceledButtonHandler(item.id)}
+                      onClick={() =>
+                        clickCompletedButtonHandler(item.id, "포기하지마!!")
+                      }
                     >
-                      취소
+                      {/* 삼항연산자 */}
+                      {item.isDone === true ? "취소" : "완료"}
                     </button>
                   </div>
                 </div>
